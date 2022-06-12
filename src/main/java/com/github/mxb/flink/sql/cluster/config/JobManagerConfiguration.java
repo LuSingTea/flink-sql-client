@@ -28,11 +28,11 @@ public class JobManagerConfiguration {
      */
     private Integer jobManageRestPort;
 
-    public Map<String, String> toProperties(){
+    public Map<String, String> toProperties() {
         Map<String, String> properties = new HashMap<>();
 
         properties.put(JOB_MANAGE_ADDRESS_KEY, this.jobManageAddress);
-        properties.put(JOB_MANAGE_ADDRESS_KEY, String.valueOf(this.jobManageRestPort));
+        properties.put(JOB_MANAGE_REST_PORT_KEY, String.valueOf(this.jobManageRestPort));
 
         return properties;
     }
