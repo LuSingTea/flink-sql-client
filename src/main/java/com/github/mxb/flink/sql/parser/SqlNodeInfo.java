@@ -47,4 +47,12 @@ public class SqlNodeInfo {
 	public void setOriginSql(String originSql) {
 		this.originSql = originSql;
 	}
+
+	@Override
+	public String toString() {
+		return "SqlNodeInfo{" +
+				"sqlNode=" + sqlNode +
+				", originSql='" + originSql + '\'' +
+				'}';
+	}
 }
