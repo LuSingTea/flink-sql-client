@@ -63,7 +63,7 @@ public class MiniClusterResource {
     private static final int DEFAULT_NUM_TMS = 8;
     private static final int DEFAULT_NUM_SLOTS_PER_TM = 8;
 
-    public static MiniClusterResource getDefaultInstance(){
+    public static MiniClusterResource getDefaultInstance() {
         return new MiniClusterResource(
                 new MiniClusterResource.MiniClusterResourceConfiguration(
                         getConfig(), DEFAULT_NUM_TMS, DEFAULT_NUM_TMS
@@ -72,7 +72,7 @@ public class MiniClusterResource {
         );
     }
 
-    private static Configuration getConfig(int localTmNum, int localTmPerSlotsNum){
+    private static Configuration getConfig(int localTmNum, int localTmPerSlotsNum) {
         Configuration config = new Configuration();
         config.setLong(String.valueOf(TaskManagerOptions.MANAGED_MEMORY_SIZE), 4 * 1024 * 1024);
         config.setInteger(ConfigConstants.LOCAL_NUMBER_TASK_MANAGER, localTmNum);
@@ -159,7 +159,7 @@ public class MiniClusterResource {
 
     public void startCluster() throws Exception {
         synchronized (MiniClusterResource.class) {
-            if ( null == jobExecutorService){
+            if (null == jobExecutorService) {
                 temporaryFolder.create();
                 startJobExecutorService(miniClusterType);
 
@@ -213,7 +213,7 @@ public class MiniClusterResource {
                 startMiniCluster();
                 break;
             default:
-                throw new FlinkRuntimeException("Unknown MiniClusterType "  + miniClusterType + '.');
+                throw new FlinkRuntimeException("Unknown MiniClusterType " + miniClusterType + '.');
         }
     }
 
@@ -272,7 +272,7 @@ public class MiniClusterResource {
         private final Time shutdownTimeout;
 
         public MiniClusterResourceConfiguration(int numberTaskManagers,
-                                                int numberSlotsPerTaskManager){
+                                                int numberSlotsPerTaskManager) {
             this(getConfig(numberTaskManagers, numberSlotsPerTaskManager), numberTaskManagers, numberSlotsPerTaskManager);
         }
 
@@ -314,8 +314,8 @@ public class MiniClusterResource {
             return shutdownTimeout;
         }
 
-        public Map<String,String> toProperties(){
-            Map<String,String> properties = new HashMap<>();
+        public Map<String, String> toProperties() {
+            Map<String, String> properties = new HashMap<>();
             properties.put(LocalExecutorConstants.LOCAL_TM_NUM_KEY, String.valueOf(this.numberTaskManagers));
             properties.put(LocalExecutorConstants.LOCAL_NUM_SLOTS_PER_TM_KEY, String.valueOf(this.numberSlotsPerTaskManager));
 

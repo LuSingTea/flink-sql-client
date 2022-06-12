@@ -15,7 +15,7 @@ public class MiniClusterManage {
         miniClusterResource = MiniClusterResource.getDefaultInstance();
     }
 
-    public static MiniClusterResource getMiniClusterResourceInstance(){
+    public static MiniClusterResource getMiniClusterResourceInstance() {
         return miniClusterResource;
     }
 

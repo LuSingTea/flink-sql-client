@@ -141,7 +141,7 @@ public class ExecutionContext<T> {
         clusterSpec = createClusterSpecification(activeCommandLine, commandLine);
 
         // always share environment instance
-        if ( null == jobRunConfig ) {
+        if (null == jobRunConfig) {
             environmentInstance = new ExecutionContext.EnvironmentInstance(DEFAULT_ENABLE_CHECKPOINT, DEFAULT_JOB_RUN_CONFIG);
         } else {
             environmentInstance = new ExecutionContext.EnvironmentInstance(DEFAULT_ENABLE_CHECKPOINT, jobRunConfig);
@@ -200,7 +200,7 @@ public class ExecutionContext<T> {
      * Executes the given supplier using the execution context's classloader as thread classloader.
      */
     public <R> R wrapClassLoader(Supplier<R> supplier) {
-        try (TemporaryClassLoaderContext tmpCl = new TemporaryClassLoaderContext(classLoader)){
+        try (TemporaryClassLoaderContext tmpCl = new TemporaryClassLoaderContext(classLoader)) {
             return supplier.get();
         }
     }
@@ -465,15 +465,15 @@ public class ExecutionContext<T> {
                 env.getConfig().setAutoWatermarkInterval(mergedEnv.getExecution().getPeriodicWatermarksInterval());
             }
 
-            if (Objects.nonNull(enableCheckpoint) && enableCheckpoint){
-                if (Objects.nonNull(interval) && interval > 0){
+            if (Objects.nonNull(enableCheckpoint) && enableCheckpoint) {
+                if (Objects.nonNull(interval) && interval > 0) {
                     env.enableCheckpointing(interval);
                 } else {
                     env.enableCheckpointing(DEFAULT_CHECKPOINT_INTERVAL);
                 }
             }
 
-            if (Objects.nonNull(defaultParallelism)){
+            if (Objects.nonNull(defaultParallelism)) {
                 env.setParallelism(defaultParallelism);
             }
 
@@ -496,7 +496,7 @@ public class ExecutionContext<T> {
             registerFunctions(functions);
         }
 
-        public void registerFunctions(Map<String, UserDefinedFunction> functions){
+        public void registerFunctions(Map<String, UserDefinedFunction> functions) {
             if (tableEnv instanceof StreamTableEnvironment) {
                 StreamTableEnvironment streamTableEnvironment = (StreamTableEnvironment) tableEnv;
                 functions.forEach((k, v) -> {

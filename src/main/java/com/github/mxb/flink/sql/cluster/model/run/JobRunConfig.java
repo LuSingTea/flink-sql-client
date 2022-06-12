@@ -30,7 +30,7 @@ public class JobRunConfig {
 
     /**
      * If you dropped an operator, you can allow to skip state that cannot be mapped to the new program
-     *
+     * <p>
      * if true,restore savepoint will skip state if you dropped an operator
      * if false,restore savepoint will not skip state if you dropped an operator and run with Exception
      */

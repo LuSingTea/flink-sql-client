@@ -45,7 +45,7 @@ public class FlinkSqlParserUtil {
         FlinkPlannerImpl planner = new FlinkPlannerImpl(FRAMEWORK_CONFIG,null,null,null);
         List<SqlInfo> sqlInfos = SqlLists.getSQLList(sql);
 
-        List<SqlNodeInfo> sqlNodeInfoList = new ArrayList();
+        List<SqlNodeInfo> sqlNodeInfoList = new ArrayList<>();
         for (SqlInfo sqlInfo : sqlInfos){
             if (StringUtils.isBlank(sqlInfo.getSqlContent())){continue;}
 

@@ -1,9 +1,9 @@
 package com.github.mxb.flink.sql.cluster.descriptor;
 
 /**
- *@description     stand alone集群的id
- *@auther          moxianbin
- *@create          2020-04-11 19:11:58
+ * @description stand alone集群的id
+ * @auther moxianbin
+ * @create 2020-04-11 19:11:58
  */
 public final class StandAloneClusterId {
     /**

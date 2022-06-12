@@ -111,7 +111,7 @@ public class LocalClusterClient<T> extends AbstractClusterClient<T> {
         String savePointPath = "";
         try {
             savePointPath = completableFuture.get();
-        } catch ( ExecutionException | InterruptedException e){
+        } catch (ExecutionException | InterruptedException e) {
             throw new UndeclaredThrowableException(e);
         }
 

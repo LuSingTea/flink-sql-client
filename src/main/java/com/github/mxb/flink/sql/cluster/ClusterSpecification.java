@@ -25,62 +25,62 @@ import org.apache.flink.configuration.JobManagerOptions;
 import org.apache.flink.configuration.TaskManagerOptions;
 
 /**
- * @description     Description of the resource to start by the {@link ClusterDescriptor}.
- * @auther          moxianbin
- * @create          2020-04-11 20:44:42
+ * @description Description of the resource to start by the {@link ClusterDescriptor}.
+ * @auther moxianbin
+ * @create 2020-04-11 20:44:42
  */
 @Data
 @Builder
 public final class ClusterSpecification {
-	private final int masterMemoryMB;
-	private final int taskManagerMemoryMB;
-	private final int numberTaskManagers;
-	private final int slotsPerTaskManager;
+    private final int masterMemoryMB;
+    private final int taskManagerMemoryMB;
+    private final int numberTaskManagers;
+    private final int slotsPerTaskManager;
 
-	private ClusterSpecification(int masterMemoryMB, int taskManagerMemoryMB, int numberTaskManagers, int slotsPerTaskManager) {
-		this.masterMemoryMB = masterMemoryMB;
-		this.taskManagerMemoryMB = taskManagerMemoryMB;
-		this.numberTaskManagers = numberTaskManagers;
-		this.slotsPerTaskManager = slotsPerTaskManager;
-	}
+    private ClusterSpecification(int masterMemoryMB, int taskManagerMemoryMB, int numberTaskManagers, int slotsPerTaskManager) {
+        this.masterMemoryMB = masterMemoryMB;
+        this.taskManagerMemoryMB = taskManagerMemoryMB;
+        this.numberTaskManagers = numberTaskManagers;
+        this.slotsPerTaskManager = slotsPerTaskManager;
+    }
 
-	public int getMasterMemoryMB() {
-		return masterMemoryMB;
-	}
+    public int getMasterMemoryMB() {
+        return masterMemoryMB;
+    }
 
-	public int getTaskManagerMemoryMB() {
-		return taskManagerMemoryMB;
-	}
+    public int getTaskManagerMemoryMB() {
+        return taskManagerMemoryMB;
+    }
 
-	public int getNumberTaskManagers() {
-		return numberTaskManagers;
-	}
+    public int getNumberTaskManagers() {
+        return numberTaskManagers;
+    }
 
-	public int getSlotsPerTaskManager() {
-		return slotsPerTaskManager;
-	}
+    public int getSlotsPerTaskManager() {
+        return slotsPerTaskManager;
+    }
 
-	@Override
-	public String toString() {
-		return "ClusterSpecification{" +
-			"masterMemoryMB=" + masterMemoryMB +
-			", taskManagerMemoryMB=" + taskManagerMemoryMB +
-			", numberTaskManagers=" + numberTaskManagers +
-			", slotsPerTaskManager=" + slotsPerTaskManager +
-			'}';
-	}
+    @Override
+    public String toString() {
+        return "ClusterSpecification{" +
+                "masterMemoryMB=" + masterMemoryMB +
+                ", taskManagerMemoryMB=" + taskManagerMemoryMB +
+                ", numberTaskManagers=" + numberTaskManagers +
+                ", slotsPerTaskManager=" + slotsPerTaskManager +
+                '}';
+    }
 
-	public static ClusterSpecification fromConfiguration(Configuration configuration) {
-		int slots = configuration.getInteger(TaskManagerOptions.NUM_TASK_SLOTS, 1);
+    public static ClusterSpecification fromConfiguration(Configuration configuration) {
+        int slots = configuration.getInteger(TaskManagerOptions.NUM_TASK_SLOTS, 1);
 
-		int jobManagerMemoryMb = Integer.parseInt(configuration.getString(JobManagerOptions.JOB_MANAGER_HEAP_MEMORY));
-		int taskManagerMemoryMb = Integer.parseInt(configuration.getString(TaskManagerOptions.TASK_MANAGER_HEAP_MEMORY));
+        int jobManagerMemoryMb = Integer.parseInt(configuration.getString(JobManagerOptions.JOB_MANAGER_HEAP_MEMORY));
+        int taskManagerMemoryMb = Integer.parseInt(configuration.getString(TaskManagerOptions.TASK_MANAGER_HEAP_MEMORY));
 
-		return new ClusterSpecificationBuilder()
-			.masterMemoryMB(jobManagerMemoryMb)
-			.taskManagerMemoryMB(taskManagerMemoryMb)
-			.numberTaskManagers(1)
-			.slotsPerTaskManager(slots)
-			.build();
-	}
+        return new ClusterSpecificationBuilder()
+                .masterMemoryMB(jobManagerMemoryMb)
+                .taskManagerMemoryMB(taskManagerMemoryMb)
+                .numberTaskManagers(1)
+                .slotsPerTaskManager(slots)
+                .build();
+    }
 }

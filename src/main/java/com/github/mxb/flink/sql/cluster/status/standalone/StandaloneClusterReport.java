@@ -1,7 +1,7 @@
 package com.github.mxb.flink.sql.cluster.status.standalone;
 
 /**
- *  StandaloneClusterReport
+ * StandaloneClusterReport
  */
 public class StandaloneClusterReport {
 
@@ -22,7 +22,7 @@ public class StandaloneClusterReport {
         this.status = status;
     }
 
-    public enum Status{
+    public enum Status {
         /**
          * 运行中
          */
@@ -30,6 +30,6 @@ public class StandaloneClusterReport {
         /**
          * 未知
          */
-        UNKOWN
+        UNKNOWN
     }
 }

@@ -101,11 +101,11 @@ public class JobRunOverview {
         private String operatorStrategy;
         private String description;
         @JsonProperty("optimizerProperties")
-        private Map<String,Object> optimizerProperties;
+        private Map<String, Object> optimizerProperties;
     }
 
     @Data
-    public static class Vertices{
+    public static class Vertices {
         private String id;
         private String name;
         private int parallelism;
@@ -120,7 +120,7 @@ public class JobRunOverview {
     }
 
     @Data
-    public static class Metrics{
+    public static class Metrics {
         @JsonProperty("read-bytes")
         private long readBytes;
         @JsonProperty("read-bytes-complete")
@@ -151,11 +151,11 @@ public class JobRunOverview {
         private long delay;
         @JsonProperty("delay-complete")
         private boolean delayComplete;
-        private Map<String,String> userScope;
+        private Map<String, String> userScope;
     }
 
     @Data
-    public static class Tasks{
+    public static class Tasks {
         @JsonProperty("CREATED")
         private int created;
         @JsonProperty("FINISHED")

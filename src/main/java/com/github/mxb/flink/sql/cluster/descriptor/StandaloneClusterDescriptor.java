@@ -43,7 +43,7 @@ public class StandaloneClusterDescriptor implements ClusterDescriptor<StandAlone
         if (response.isSuccessful()){
             report.setStatus(StandaloneClusterReport.Status.RUNNING);
         } else {
-            report.setStatus(StandaloneClusterReport.Status.UNKOWN);
+            report.setStatus(StandaloneClusterReport.Status.UNKNOWN);
         }
 
         return StandaloneClusterStatus.builder().

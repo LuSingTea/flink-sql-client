@@ -128,7 +128,7 @@ public class SqlLists {
 
 	public static String toLowCase(String str) {
 		Matcher m = PATTERN_STRING.matcher(str);
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		int index = 0;
 		while (m.find()) {
 			sb.append(str.substring(index, m.start()).toLowerCase());

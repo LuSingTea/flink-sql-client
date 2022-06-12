@@ -15,15 +15,15 @@ public class JobsRunStatus {
     private List<JobsInfo> jobs;
 
     @Data
-    public static class JobsInfo{
+    public static class JobsInfo {
         private String id;
         private String status;
     }
 
-    public boolean contains(String jobId){
+    public boolean contains(String jobId) {
 
-        for (JobsInfo jobInfo: jobs){
-            if (jobId.equalsIgnoreCase(jobInfo.getId())){
+        for (JobsInfo jobInfo : jobs) {
+            if (jobId.equalsIgnoreCase(jobInfo.getId())) {
                 return true;
             }
         }

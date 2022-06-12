@@ -44,9 +44,9 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
- *@description     AbstractClusterClient
- *@auther          moxianbin
- *@create          2020-04-11 19:12:45
+ * @description AbstractClusterClient
+ * @auther moxianbin
+ * @create 2020-04-11 19:12:45
  */
 public abstract class AbstractClusterClient<T> implements ClusterClient<T> {
 
@@ -158,7 +158,7 @@ public abstract class AbstractClusterClient<T> implements ClusterClient<T> {
             envSchema = envSchema.replace(EXECUTION_TYPE_KEY, JobRunType.STREAMING.name().toLowerCase());
         }
 
-        if (null != jobRunConfig.getFlinkPlanner()){
+        if (null != jobRunConfig.getFlinkPlanner()) {
             envSchema = envSchema.replace(PLANNER_KEY, jobRunConfig.getFlinkPlanner().name());
         } else {
             envSchema = envSchema.replace(PLANNER_KEY, FlinkPlanner.old.name());
@@ -286,8 +286,8 @@ public abstract class AbstractClusterClient<T> implements ClusterClient<T> {
         }
     }
 
-    protected static Predicate<Throwable> isConnectionProblemException(){
-        return throwable  ->
+    protected static Predicate<Throwable> isConnectionProblemException() {
+        return throwable ->
                 ExceptionUtils.findThrowable(throwable, java.net.ConnectException.class).isPresent() ||
                         ExceptionUtils.findThrowable(throwable, java.net.SocketTimeoutException.class).isPresent() ||
                         ExceptionUtils.findThrowable(throwable, org.apache.flink.shaded.netty4.io.netty.channel.ConnectTimeoutException.class).isPresent() ||
@@ -295,7 +295,7 @@ public abstract class AbstractClusterClient<T> implements ClusterClient<T> {
     }
 
     protected void reThrowException(Exception e) throws FlinkClientTimeoutException, FlinkException {
-        if ( isConnectionProblemException().test(e) ){
+        if (isConnectionProblemException().test(e)) {
             throw new FlinkClientTimeoutException(e);
         }
 

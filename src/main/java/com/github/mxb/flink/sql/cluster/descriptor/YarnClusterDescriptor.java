@@ -25,9 +25,9 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 
 /**
- *@description     YarnClusterDescriptor
- *@auther          moxianbin
- *@create          2020-04-11 19:12:14
+ * @description YarnClusterDescriptor
+ * @auther moxianbin
+ * @create 2020-04-11 19:12:14
  */
 public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId, ApplicationReport> {
 
@@ -48,7 +48,6 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId, A
 
         this.flinkConfiguration = Preconditions.checkNotNull(flinkConfiguration);
     }
-
 
 
     @Override
@@ -98,7 +97,7 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId, A
         }
     }
 
-    protected ClusterClient<ApplicationId> createYarnClusterClient(Configuration flinkConfiguration){
+    protected ClusterClient<ApplicationId> createYarnClusterClient(Configuration flinkConfiguration) {
         return new JobManagerClient<>(flinkConfiguration);
     }
 
@@ -113,5 +112,6 @@ public class YarnClusterDescriptor implements ClusterDescriptor<ApplicationId, A
     }
 
     @Override
-    public void close() throws Exception { }
+    public void close() throws Exception {
+    }
 }

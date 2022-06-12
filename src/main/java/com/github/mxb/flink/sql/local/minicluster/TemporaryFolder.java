@@ -47,7 +47,7 @@ public class TemporaryFolder {
         File file = new File(getRoot(), fileName);
         if (!file.createNewFile()) {
             throw new IOException(
-                    "a file with the name \'" + fileName + "\' already exists in the test folder");
+                    "a file with the name '" + fileName + "' already exists in the test folder");
         }
         return file;
     }
@@ -79,7 +79,7 @@ public class TemporaryFolder {
             file = new File(file, folderName);
             if (!file.mkdir() && isLastElementInArray(i, folderNames)) {
                 throw new IOException(
-                        "a folder with the name \'" + folderName + "\' already exists");
+                        "a folder with the name '" + folderName + "' already exists");
             }
         }
         return file;
@@ -88,8 +88,7 @@ public class TemporaryFolder {
     /**
      * Validates if multiple path components were used while creating a folder.
      *
-     * @param folderName
-     *            Name of the folder being created
+     * @param folderName Name of the folder being created
      */
     private void validateFolderName(String folderName) throws IOException {
         File tempFile = new File(folderName);

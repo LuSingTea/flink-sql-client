@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @description     ClusterClient
- * @auther          moxianbin
- * @create          2020-04-11 20:43:26
+ * @description ClusterClient
+ * @auther moxianbin
+ * @create 2020-04-11 20:43:26
  */
 public interface ClusterClient<T> {
 
@@ -34,6 +34,7 @@ public interface ClusterClient<T> {
 
     /**
      * stop job
+     *
      * @param jobId
      * @param savepointDir
      * @return
@@ -66,7 +67,6 @@ public interface ClusterClient<T> {
     ProgramTargetDescriptor executeSqlJob(JobRunConfig jobRunConfig, String dependencyJarDir, String sql) throws FlinkException, SqlExecutionException, SqlParseException, FlinkClientTimeoutException;
 
     /**
-     *
      * @param jobConfig
      * @param dependencyJars
      * @param sql
@@ -78,7 +78,6 @@ public interface ClusterClient<T> {
     ProgramTargetDescriptor executeSqlJob(JobConfig jobConfig, List<File> dependencyJars, String sql) throws FlinkException, SqlExecutionException, SqlParseException, FlinkClientTimeoutException;
 
     /**
-     *
      * @param jobRunConfig
      * @param dependencyJars
      * @param sql
