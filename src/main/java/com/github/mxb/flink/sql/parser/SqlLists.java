@@ -39,7 +39,9 @@ public class SqlLists {
 	private static final Pattern PATTERN_MULTI_LINE = Pattern.compile("/\\*.*?\\*/", Pattern.DOTALL);
 
 	public static List<SqlInfo> getSQLList(String context) {
-		Map<Integer, Integer> enterMap = new TreeMap<Integer, Integer>();
+		// 先找到换行的位置，并存入一个map
+		// 换行符的下标，第几行
+		Map<Integer, Integer> enterMap = new TreeMap<>();
 		int enterCount = 1;
 		for (int i = 0; i < context.length(); i++) {
 			if (context.charAt(i) == '\n') {
@@ -48,7 +50,7 @@ public class SqlLists {
 		}
 		enterMap.put(context.length(), enterCount++);
 
-		List<SqlInfo> list = new ArrayList<SqlInfo>();
+		List<SqlInfo> list = new ArrayList<>();
 
 		Matcher match = PATTERN_STATEMENT.matcher(context);
 		int index = 0;
@@ -97,7 +99,6 @@ public class SqlLists {
 			String str = context.substring(index).replaceAll("\\\\;", ";");
 			str = str.replaceAll("^;", "");
 			if (!"".equals(str) && !isCommentClause(str)) {
-				int loc = index - 1;
 				int maxEnters = 0;
 				int lastEnter = 0;
 				int firstLineIndex = 0;
@@ -132,15 +133,21 @@ public class SqlLists {
 		int index = 0;
 		while (m.find()) {
 			sb.append(str.substring(index, m.start()).toLowerCase());
-			sb.append(str.substring(m.start(), m.end()));
+			sb.append(str, m.start(), m.end());
 			index = m.end();
 		}
 		if (index != str.length()) {
-			sb.append(str.substring(index, str.length()).toLowerCase());
+			sb.append(str.substring(index).toLowerCase());
 		}
 		return sb.toString();
 	}
 
+	/**
+	 * 是否是注释子句
+	 *
+	 * @param str
+	 * @return
+	 */
 	private static boolean isCommentClause(String str) {
 		String trimStr = str.trim();
 		if (trimStr.startsWith("/*") && trimStr.endsWith("*/")) {
@@ -175,7 +182,15 @@ public class SqlLists {
 		return count % 2 == 0;
 	}
 
+	/**
+	 * 判断是否在单行注释中
+	 *
+	 * @param context
+	 * @param index
+	 * @return
+	 */
 	private static boolean isInComment(String context, int index) {
+		// 判断是否在单行注释中
 		Matcher singleMatch = PATTERN_SINGLE_LINE.matcher(context);
 
 		while (singleMatch.find()) {
@@ -187,6 +202,7 @@ public class SqlLists {
 			}
 		}
 
+		// 判断是否在多行注释中
 		Matcher multiMatch = PATTERN_MULTI_LINE.matcher(context);
 
 		while (multiMatch.find()) {
@@ -201,7 +217,4 @@ public class SqlLists {
 		return false;
 	}
 
-	private static boolean isComment(String context) {
-		return true;
-	}
 }
